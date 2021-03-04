@@ -24,8 +24,8 @@ public class Game {
        
         GameObject smurf = new GameObject("smurf",true);
         GameObject lampa = new GameObject("taklampa", false);
-        GameObject banana = new GameObject("banana",false);
-        GameObject ponny = new GameObject("ponny",false);
+        GameObject banana = new GameObject("banana",true);
+        GameObject ponny = new GameObject("ponny",true);
        
         Container box = new Container("BLUE BOX", false, true, gui);
        
@@ -36,15 +36,15 @@ public class Game {
 
 
         Person newPlayer1 = new Person("Ola",0, gui);        
-       
+        room1.addNpc(newPlayer1);
         Person jakob = new Person("Jakob", 4, gui);
-        room1.addNpc(jakob);
+        room2.addNpc(jakob);
         
         Person jonte = new Person("Jonte", 1, gui);
-        room2.addNpc(jonte);
+        room3.addNpc(jonte);
         
         Person simon = new Person("Simon", 2, gui);
-        room3.addNpc(simon);
+        room4.addNpc(simon);
        
         
         persons = new Person[3];
@@ -66,11 +66,11 @@ public class Game {
             e.printStackTrace();
         }
         
-        Inventory inventory = new Inventory(1, gui);
-        inventory.addObject(smurf);
-        inventory.addObject(lampa);
-        inventory.addObject(ponny);
-        inventory.addObject(banana);
+        Inventory inventory = newPlayer1.getInventory();
+        //inventory.addObject(smurf);
+        //inventory.addObject(lampa);
+        //inventory.addObject(ponny);
+        //inventory.addObject(banana);
 
         
         this.gui = new Gui();
@@ -118,15 +118,16 @@ public class Game {
                         
                         
                 if (command.startsWith("take")  ) {
-                    String objectName = command.substring(3);
+                    String objectName = command.substring(5);
                     System.out.println(objectName);
 
-                    if (map[currentRoomView].getInventory().contains(objectName)) {
-                        GameObject gameObject = map[currentRoomView].getInventory().returnGameObject(objectName);
+                    if (map[rumIndex].getInventory().contains(objectName)) {
+                        GameObject gameObject = map[rumIndex].getInventory().returnGameObject(objectName);
                         if (gameObject.isMoveable()) {
+                        	System.out.println(gameObject.isMoveable());
                             boolean succeses = newPlayer1.getInventory().addObject(gameObject);
                             if (succeses) {
-                                map[currentRoomView].getInventory().removeObject(gameObject);
+                                map[rumIndex].getInventory().removeObject(gameObject);
                             }
                         }
                     }

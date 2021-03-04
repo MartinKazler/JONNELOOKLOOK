@@ -66,6 +66,7 @@ import java.util.stream.Collectors;
 
         public String getCommand() {
             if (this.gotCommand) {
+            	this.gotCommand = false;
                 return this.command;
             }
             return "-1";
