@@ -52,8 +52,6 @@ public class Game {
         persons[1] = jonte;
         persons[2] = simon;
         
-        int currentRoomView = 0;
-        
         ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(10);
         pool.scheduleAtFixedRate(jakob, 20, 20, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(jonte, 15, 25, TimeUnit.SECONDS);
@@ -67,11 +65,7 @@ public class Game {
         }
         
         Inventory inventory = newPlayer1.getInventory();
-        //inventory.addObject(smurf);
-        //inventory.addObject(lampa);
-        //inventory.addObject(ponny);
-        //inventory.addObject(banana);
-
+    
         
         this.gui = new Gui();
 
@@ -133,7 +127,7 @@ public class Game {
                     }
                 
                 } 
-                if (command.contains("drop")  ) {
+                if (command.startsWith("drop")  ) {
 
                     if (command.contains("banana")  ) {
                         map[rumIndex].addObject(banana);

@@ -3,27 +3,22 @@ package Projekt2;
 public class Player {
 
     private String name;
-    private String thePlayer;
-    private Inventory inventory1;
-    private int position;
-
+    private Inventory inventory;
     Gui gui;
 
     public Player(String name, int startRoom, Gui g) {
 
         this.gui = g;
         this.name = name;
-        this.thePlayer = name;
-        this.position = startRoom;
-        this.inventory1 = new Inventory(6,g);
+        this.inventory = new Inventory(6,g);
 
     }
     // rummets inventory
     public Inventory getInventory(){
-        return this.inventory1;
+        return this.inventory;
     }
     public String toString (){
-        return this.name + " is carrying " +this.inventory1;
+        return this.name + " is carrying " +this.inventory;
     }
 
 }

@@ -1,22 +1,11 @@
 package Projekt2;
 
-import java.lang.module.FindException;
 import java.util.Arrays;
-
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class Inventory {
 
 	private GameObject[] list;
-	private int size;
-	private Gui gui;
-
 	public Inventory(int size, Gui g) {
-		this.gui = g;
-		this.size = size;
 		list = new GameObject[size];
 	}
 
@@ -75,4 +64,3 @@ public class Inventory {
 		return -1;
 	}
 }
-

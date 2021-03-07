@@ -1,6 +1,5 @@
 package Projekt2;
 
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Room {
